@@ -36,13 +36,15 @@ def load_class_encoder():
     return class_encoder
 
 def delet_old_file():
-    files = glob.glob("*.txt")
+    files = glob.glob("*.csv")
+    print(files)
     for path in files:
         if os.path.isfile(path) or os.path.islink(path):
-        os.remove(path)
-        
-@app.route('/', methods=['POST'])
+            os.remove(path)
+
+@app.route('/emailclassifier', methods=['GET', 'POST'])
 def upload_file():
+    delet_old_file()
     model = load_model()
     tokensizer = load_tokenizer()
     encoder = load_class_encoder()
@@ -72,4 +74,4 @@ def upload_file():
             return str(e)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=False, port=5000)
