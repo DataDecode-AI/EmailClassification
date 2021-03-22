@@ -41,7 +41,7 @@ def delet_old_file():
         if os.path.isfile(path) or os.path.islink(path):
         os.remove(path)
         
-@app.route('/uploader', methods=['GET', 'POST'])
+@app.route('/', methods=['POST'])
 def upload_file():
     model = load_model()
     tokensizer = load_tokenizer()
@@ -72,4 +72,4 @@ def upload_file():
             return str(e)
 
 if __name__ == '__main__':
-    app.run(debug=False, port=8210)
+    app.run(debug=False, port=80)
