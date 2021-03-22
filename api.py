@@ -41,7 +41,7 @@ def delet_old_file():
         if os.path.isfile(path) or os.path.islink(path):
         os.remove(path)
         
-@app.route('/emailclassifier', methods=['POST'])
+@app.route('/', methods=['POST'])
 def upload_file():
     model = load_model()
     tokensizer = load_tokenizer()
