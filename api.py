@@ -69,7 +69,7 @@ def upload_file():
             output_df = pd.DataFrame({'converse': converse,
                                      'lables': labels})
             output_df.to_csv('Output.csv', index=False)
-            return send_file('Output.csv', attachment_filename='Output.csv')
+            return send_file('Output.csv', as_attachment=True)
         except Exception as e:
             return str(e)
 
